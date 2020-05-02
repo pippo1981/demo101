@@ -1,6 +1,4 @@
 - hosts: kube20
-  become: yes
-
   tasks:
   - name: Deploy the service
     k8s:
