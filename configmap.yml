@@ -1,0 +1,28 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: hello-svc.com
+  labels:
+    f5type: virtual-server
+data:
+  # See the f5-schema table for schema-controller compatibility
+  # https://clouddocs.f5.com/containers/latest/releases_and_versioning.html#f5-schema
+  schema: "f5schemadb://bigip-virtual-server_v0.1.7.json"
+  data: |
+    {
+      "virtualServer": {
+        "backend": {
+          "servicePort": 80,
+          "serviceName": "hello-svc"
+        },
+        "frontend": {
+          "virtualAddress": {
+            "port": 80,
+            "bindAddr": "10.14.118.119"
+          },
+          "partition": "kube20",
+          "balance": "ratio-member",
+          "mode": "http"
+        }
+      }
+    }
