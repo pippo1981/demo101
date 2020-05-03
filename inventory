@@ -1,0 +1,10 @@
+[k8s-master]
+kube20 ansible_host=10.20.255.101 kubernetes_role=master
+
+[k8s:vars]
+ansible_ssh_user=root
+ansible_ssh_private_key_file=/home/allen/.ssh/id_rsa
+
+[k8s:children]
+k8s-master
+
