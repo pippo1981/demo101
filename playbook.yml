@@ -12,3 +12,9 @@
       validate_certs: no
       namespace: default
       definition: "{{ lookup('template', 'deployment.yml') | from_yaml }}"
+  - name: Deploy the configmap
+    k8s:
+      state: present
+      validate_certs: no
+      namespace: default
+      definition: "{{ lookup('template', 'configmap.yml') | from_yaml }}"
